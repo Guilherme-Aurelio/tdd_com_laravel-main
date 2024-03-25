@@ -29,6 +29,7 @@ O projeto será desenvolvido utilizando as seguintes tecnologias:
 `test_post_shopping_list_endpoint`: Este método testa a funcionalidade de adicionar uma nova lista de compras. 
 `test_put_shopping_list_endpoint`: Este método testa a funcionalidade de atualizar uma lista de compras existente. 
 `test_delete_shopping_list_endpoint`: Este método testa a funcionalidade de excluir uma lista de compras existente. 
+
 Esses casos de teste abrangem as principais funcionalidades do aplicativo e garantirão que todas as partes do sistema estejam devidamente testadas e funcionando corretamente. 
 
 #### 5. Estrutura Básica dos Testes
@@ -36,10 +37,12 @@ A estrutura básica dos testes segue o padrão de testes fornecido pelo Laravel.
 
 #### 6. Implementação do Projeto
 O projeto foi implementado seguindo as práticas recomendadas do Laravel, com estrutura MVC (Model-View-Controller) para garantir uma separação clara de responsabilidades. A funcionalidade principal de gerenciamento de listas de compras foi implementada no controlador “ShoppingListController”, que é responsável por lidar com requisições HTTP relacionadas às listas de compras. Além disso, foram criados modelos para representar os dados das listas de compras (“ShoppingList”) e dos usuários (“User”). 
+
 A implementação do projeto foi realizada de forma interativa, seguindo a abordagem de Test Driven Development (TDD). Primeiro, os casos de teste foram escritos para as funcionalidades desejadas. Em seguida, o código foi desenvolvido para fazer os testes passarem. Esse ciclo foi repetido até que todas as funcionalidade estivessem implementadas e os testes passassem com sucesso. 
 
 #### 7.  Desafios e Lições Aprendidas
 Durante o desenvolvimento do projeto, alguns desafios foram enfrentados, principalmente relacionados à configuração inicial do ambiente de desenvolvimento e à familiarização com o framework Laravel. No entanto, esses desafios foram superados com pesquisa e experimentação da tecnologia PHP e framework Laravel. 
+
 Além disso, utilizou-se a abordagem Test Driven Development (TDD), onde, primeiramente, criaram-se testes, e posteriormente, o código principal. Isso ajudou a manter o projeto organizado e a garantir que tudo funcionasse corretamente. Portanto, notou-se que é importante manter o código limpo e fazer melhorias constantes. 
 No final, foi criado um aplicativo sólido e adquiriu-se experiência em desenvolvimento ágil e TDD, proporcionando uma maior confiança na qualidade do código.
 
