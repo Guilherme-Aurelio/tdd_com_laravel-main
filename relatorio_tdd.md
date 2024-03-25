@@ -21,7 +21,9 @@ A proposta do projeto foi o desenvolvimento de um aplicativo de lista de compras
 O projeto será desenvolvido utilizando as seguintes tecnologias:
 - PHP: Linguagem de programação principal do projeto, utilizada em conjunto com o framework Laravel para o desenvolvimento da aplicação. 
 - Laravel: Framework PHP utilizado para facilitar o desenvolvimento ágil e eficiente da aplicação, fornecendo boa estrutura e um conjunto de ferramentas úteis para o desenvolvimento e testes. 
-- MySQL: Banco de dados relacional utilizado para armazenar os dados das listas de compras e dos usuários. 
+- MySQL: Banco de dados relacional utilizado para armazenar os dados das listas de compras e dos usuários.
+- SQLite: Banco de dados em memória.
+- Angular: Framework TypeScript utilizado para o front-end de aplicações web. 
 
 #### 4. Lista Preliminar de Casos de Teste
 `test_get_shopping_lists_endpoint`: Este método testa a funcionalidade de obtenção de todas as listas de compras. 
