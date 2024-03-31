@@ -21,6 +21,11 @@ class ListItemController extends Controller
     public function show($id)
     {
         $item = $this->listItem->find($id);
+
+        if (!$item) {
+            return response()->json(['message' => 'List item not found.'], 404);
+        }
+
         return response()->json($item);
     }
 

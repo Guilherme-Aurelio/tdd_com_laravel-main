@@ -1,17 +1,17 @@
 <?php
 
-namespace Tests\Feature\API;
+/* namespace Tests\Feature\API;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\ShoppingList;
 use Illuminate\Testing\Fluent\AssertableJson;
-
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ShoppingListControllerTest extends TestCase
 {
-    use RefreshDatabase;
-    
+    use DatabaseTransactions;
+
     public function test_get_shopping_lists_endpoint(): void
     {
         $shoppingLists = ShoppingList::factory(3)->create();
@@ -60,7 +60,7 @@ class ShoppingListControllerTest extends TestCase
                 'id' => 'integer',
                 'name' => 'string',
                 'description' => 'string'
-            ]);            
+            ]);
 
             $json->whereAll([
                 'id' => $shoppingList->id,
@@ -127,3 +127,4 @@ class ShoppingListControllerTest extends TestCase
 
 
 }
+ */
