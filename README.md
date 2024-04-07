@@ -48,4 +48,10 @@ Durante o desenvolvimento do projeto, alguns desafios foram enfrentados, princip
 Além disso, utilizou-se a abordagem Test Driven Development (TDD), onde, primeiramente, criaram-se testes, e posteriormente, o código principal. Isso ajudou a manter o projeto organizado e a garantir que tudo funcionasse corretamente. Portanto, notou-se que é importante manter o código limpo e fazer melhorias constantes. 
 No final, foi criado um aplicativo sólido e adquiriu-se experiência em desenvolvimento ágil e TDD, proporcionando uma maior confiança na qualidade do código.
 
+![Captura de tela 2024-04-07 203627](https://github.com/Guilherme-Aurelio/tdd_com_laravel-main/assets/114674378/964b7ca7-7eab-4a9a-aa15-5a178af889f0)
 
+![Captura de tela 2024-04-07 203640](https://github.com/Guilherme-Aurelio/tdd_com_laravel-main/assets/114674378/1e2f6a13-e70d-4d3f-b5df-328bb0f3ab17)
+
+![Captura de tela 2024-04-07 203755](https://github.com/Guilherme-Aurelio/tdd_com_laravel-main/assets/114674378/07792f07-7aaa-4b3f-9f97-1071903b26e0)
+
+![Captura de tela 2024-04-07 203857](https://github.com/Guilherme-Aurelio/tdd_com_laravel-main/assets/114674378/d52a9f2b-d435-4beb-bda9-7b6ec9e76b99)
