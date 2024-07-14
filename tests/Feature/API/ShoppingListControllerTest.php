@@ -1,130 +1,85 @@
 <?php
 
-/* namespace Tests\Feature\API;
+namespace Tests\Feature\API;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\ShoppingList;
-use Illuminate\Testing\Fluent\AssertableJson;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-class ShoppingListControllerTest extends TestCase
+
+class ShoppingListFeatureTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
 
-    public function test_get_shopping_lists_endpoint(): void
+    public function test_can_list_shopping_lists()
     {
-        $shoppingLists = ShoppingList::factory(3)->create();
+        $shoppingLists = ShoppingList::factory()->count(3)->create();
 
-        $response = $this->getJson('/api/shoppingList');
+        $response = $this->get('/api/shoppingList');
 
-        // dd($response->baseResponse);m
-
-        $response->assertStatus(200);
-        $response->assertJsonCount(3);
-
-        $response->assertJson(function (AssertableJson $json) use($shoppingLists){
-            $json->whereAllType([
-                '0.id' => 'integer',
-                '0.name' => 'string',
-                '0.description' => 'string'
-            ]);
-
-            $json->hasAll(['0.id', '0.name', '0.description']);
-
-            $shoppingList = $shoppingLists->first();
-
-            $json->whereAll([
-                '0.id' => $shoppingList->id,
-                '0.name' => $shoppingList->name,
-                '0.description' => $shoppingList->description,
-
-            ]);
-        });
+        $response->assertStatus(200)
+                 ->assertJson($shoppingLists->toArray());
     }
 
-    public function test_get__single_shopping_list_endpoint(): void
+    public function test_can_show_shopping_list()
     {
-        $shoppingList = ShoppingList::factory(1)->createOne();
+        $shoppingList = ShoppingList::factory()->create();
 
-        $response = $this->getJson('/api/shoppingList/' . $shoppingList->id);
+        $response = $this->get('/api/shoppingList/' . $shoppingList->id);
 
-        // dd($response->baseResponse);
-
-        $response->assertStatus(200);
-
-        $response->assertJson(function (AssertableJson $json) use($shoppingList){
-            $json->hasAll(['id', 'name', 'description', 'created_at', 'updated_at']);
-
-            $json->whereAllType([
-                'id' => 'integer',
-                'name' => 'string',
-                'description' => 'string'
-            ]);
-
-            $json->whereAll([
-                'id' => $shoppingList->id,
-                'name' => $shoppingList->name,
-                'description' => $shoppingList->description,
-            ]);
-        });
+        $response->assertStatus(200)
+                 ->assertJson($shoppingList->toArray());
     }
 
-    public function test_post_shopping_list_endpoint()
+    public function test_can_store_shopping_list()
     {
-        $shoppingList = ShoppingList::factory(1)->makeOne()->toArray();
-
-        $response = $this->postJson('/api/shoppingList/', $shoppingList);
-
-        $response->assertStatus(201);
-
-        $response->assertJson(function (AssertableJson $json) use ($shoppingList){
-            $json->hasAll(['id', 'name', 'description', 'created_at', 'updated_at']);
-
-
-            $json->whereAll([
-                'name' => $shoppingList['name'],
-                'description' => $shoppingList['description'],
-            ])->etc();
-        });
-
-    }
-
-    public function test_put_shopping_list_endpoint()
-    {
-
-        ShoppingList::factory(1)->createOne();
-
-        $shoppingList = [
-            'name' => 'Novo nome da lista de compras para atualizar',
-            'description' => 'Descrição da lista de compras para atualizar'
+        $data = [
+            'name' => 'New Shopping List',
+            'description' => 'Description of the new shopping list',
         ];
 
-        $response = $this->putJson('/api/shoppingList/1', $shoppingList);
+        $response = $this->post('/api/shoppingList', $data);
 
-        $response->assertStatus(200);
-
-        $response->assertJson(function (AssertableJson $json) use ($shoppingList){
-            $json->hasAll(['id', 'name', 'description', 'created_at', 'updated_at']);
-
-
-            $json->whereAll([
-                'name' => $shoppingList['name'],
-                'description' => $shoppingList['description'],
-            ])->etc();
-        });
+        $response->assertStatus(201)
+                 ->assertJsonFragment($data);
     }
 
-    public function test_delete_shopping_list_endpoint()
+    public function test_can_update_shopping_list()
     {
-        ShoppingList::factory(1)->createOne();
+        $shoppingList = ShoppingList::factory()->create();
+        $newData = [
+            'name' => 'Updated Shopping List Name',
+            'description' => 'Updated description of the shopping list',
+        ];
 
-        $response = $this->deleteJson('api/shoppingList/1');
+        $response = $this->put('/api/shoppingList/' . $shoppingList->id, $newData);
+
+        $response->assertStatus(200)
+                 ->assertJsonFragment($newData);
+    }
+
+    public function test_can_delete_shopping_list()
+    {
+        $shoppingList = ShoppingList::factory()->create();
+
+        $response = $this->delete('/api/shoppingList/' . $shoppingList->id);
 
         $response->assertStatus(204);
+        $this->assertNull(ShoppingList::find($shoppingList->id));
     }
+    public function testUpdateShoppingListNotFound()
+    {
+        $shoppingListId = 999;
 
+        $newData = [
+            'name' => 'Updated Shopping List Name',
+            'description' => 'Updated description of the shopping list'
+        ];
 
+        $response = $this->put('/api/shoppingList/' . $shoppingListId, $newData);
 
+        $response->assertStatus(404)
+                 ->assertJson(['message' => 'Shopping list not found.']);
+    }
 }
- */
+
+
