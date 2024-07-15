@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Models\ShoppingList;
 
-class ShoppingListFeatureTest extends TestCase
+class ShoppingListControllerTest extends TestCase
 {
     use RefreshDatabase;
 

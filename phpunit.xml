@@ -4,9 +4,9 @@
     <testsuite name="Unit">
       <directory suffix="Test.php">./tests/Unit</directory>
     </testsuite>
-    <testsuite name="Feature">
-      <directory suffix="Test.php">./tests/Feature</directory>
-    </testsuite>
+        <testsuite name="Feature/API">
+            <directory suffix="Test.php">./tests/Feature/API</directory>
+        </testsuite>
   </testsuites>
   <php>
     <env name="APP_ENV" value="testing"/>
@@ -28,5 +28,5 @@
       <directory suffix=".php">./app</directory>
     </include>
   </source>
-  
+
 </phpunit>

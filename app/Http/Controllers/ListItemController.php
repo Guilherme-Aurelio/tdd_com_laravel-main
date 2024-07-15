@@ -12,15 +12,15 @@ class ListItemController extends Controller
 
     }
 
-    public function index(Request $request)
+    public function index($shoppingListId)
     {
-        $items = $this->listItem->where('shopping_list_id', $request->input('shopping_list_id'))->get();
+        $items = $this->listItem->where('shopping_list_id', $shoppingListId)->get();
         return response()->json($items);
     }
 
-    public function show($id)
+    public function show($shoppingListId, $id)
     {
-        $item = $this->listItem->find($id);
+        $item = $this->listItem->where('shopping_list_id', $shoppingListId)->find($id);
 
         if (!$item) {
             return response()->json(['message' => 'List item not found.'], 404);
@@ -29,18 +29,19 @@ class ListItemController extends Controller
         return response()->json($item);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $shoppingListId)
     {
-        $item = $this->listItem->create($request->all());
+        $data = $request->all();
+        $data['shopping_list_id'] = $shoppingListId;
+        $item = $this->listItem->create($data);
         return response()->json($item, 201);
     }
 
-    public function update(Request $request, $itemId)
+    public function update(Request $request, $shoppingListId, $id)
     {
-        $item = $this->listItem->find($itemId);
+        $item = $this->listItem->where('shopping_list_id', $shoppingListId)->find($id);
+
         if (!$item) {
-            // Adicionando log para verificar se o item foi encontrado
-            \Log::error('Item not found with ID: ' . $itemId);
             return response()->json(['message' => 'List item not found.'], 404);
         }
 
@@ -49,12 +50,12 @@ class ListItemController extends Controller
         return response()->json($item, 200);
     }
 
-    public function destroy($shoppingListId, $itemId)
+    public function destroy($shoppingListId, $id)
     {
-        $item = $this->listItem->find($itemId);
+        $item = $this->listItem->where('shopping_list_id', $shoppingListId)->find($id);
 
         if (!$item) {
-            return response()->json(['message' => 'List item not found for ID ' . $itemId . ' in shopping list with ID ' . $shoppingListId], 404);
+            return response()->json(['message' => 'List item not found.'], 404);
         }
 
         $item->delete();
